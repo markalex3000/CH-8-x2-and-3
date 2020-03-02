@@ -22,11 +22,34 @@ Standard opening
 global variables
 */
 
+vector<int> Int_vector;
+
+string vector_name{ "Blank Vector" };
 
 
 /*
 functions declarations
 */
+
+int make_fib(int x, int y, vector<int>& v, int n) {
+	for (int i = 0; i < n; i++) {
+		if (i == 0) {
+			v.push_back(x);
+			continue;
+		}
+		if (i == 1) {
+			v.push_back(y);
+			continue;
+		}
+		else v.push_back(v[i - 2] + v[i - 1]);
+	}
+	return(0);
+}
+
+void myprint(string name, vector<int>& v) {
+	cout << "Printing the vector: " << name << "\n";
+	for (int i = 0; i < v.size(); i++) cout << v[i] << "\n";
+}
 
 
 
@@ -35,7 +58,32 @@ main
 */
 
 int main() {
+	int first{ 0 };
+	int second{ 0 };
+	int num_terms{ 0 };
+	string name_of_seq{};
+		
+	cout << "Creating and printing a fibonacci sequence. \n";
+	cout << " Enter first, second, and number of terms... \n";
 
+	cout << "first = ";
+	cin >> first;
+	cout << "\n";
+	cout << "second = ";
+	cin >> second;
+	cout << "\n";
+	cout << "number of terms = ";
+	cin >> num_terms;
+	cout << "\n";
+
+	cout << "Name of sequence = ";
+	cin >> name_of_seq;
+
+	make_fib(first, second, Int_vector, num_terms);
+
+	myprint(name_of_seq, Int_vector);
+	keep_window_open();
+	return(0);
 }
 
 
